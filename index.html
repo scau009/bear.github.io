@@ -79,7 +79,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/bear.github.io/2020/03/09/mysql-03-09/">mysql-03-09</a>
+      <a class="article-title" href="/bear.github.io/2020/03/09/mysql-03-09/">MySQL并发控制以及事务概念</a>
     </h1>
   
 
@@ -87,7 +87,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##浅谈 MySQL并发控制以及事务概念<br>首先，数据库中并发的概念很简单。举个简单的例子，当两个进程在同一时刻对同一个数据表进行操作，这种情形就是并发。<br>并发会带来什么问题呢？最显而易见的就是数据的不一致性，导致很严重的数据错误，业务受损。<br>MySQL 作为成熟的数据库软件，有成熟的并发控制，下面根据《高性能 MySQL》做总结。</p>
+        <p>首先，数据库中并发的概念很简单。举个简单的例子，当两个进程在同一时刻对同一个数据表进行操作，这种情形就是并发。<br>并发会带来什么问题呢？最显而易见的就是数据的不一致性，导致很严重的数据错误，业务受损。<br>MySQL 作为成熟的数据库软件，有成熟的并发控制，下面根据《高性能 MySQL》做总结。</p>
 <h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><p>为了解决并发问题，常用加锁方案来解决。而在数据库或者软件开发中最主要的操作就是读，写这两个。而解决并发控制通常也是实现由两种类型的锁组成更多锁系统来<br>解决并发控制问题。也就是要说到的共享锁（也可以叫做读锁，shared lock）以及排它锁（也可以称作写锁 exclusive lock）。</p>
 <hr>
 <p>下面解释锁的概念：</p>
@@ -348,7 +348,7 @@
       <ul>
         
           <li>
-            <a href="/bear.github.io/2020/03/09/mysql-03-09/">mysql-03-09</a>
+            <a href="/bear.github.io/2020/03/09/mysql-03-09/">MySQL并发控制以及事务概念</a>
           </li>
         
           <li>
