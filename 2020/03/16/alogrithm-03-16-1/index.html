@@ -10,25 +10,25 @@
   <meta name="description" content="在计算机科学中，时间复杂性，又称时间复杂度，算法的时间复杂度是一个函数，它定性描述该算法的运行时间 O(1)表示一次操作即可直接取得目标元素（比如字典或哈希表） O(n) 意味着先要检查 n 个元素来搜索目标，但是 O(log n) 是什么意思呢？ 第一次听说 O(log n) 时间复杂度可能是在学二分搜索算法的时候。二分搜索一定有某种行为使其时间复杂度为 log n。我们来看看是二分搜索是如何实">
 <meta property="og:type" content="article">
 <meta property="og:title" content="时间复杂度O(log n)到底是什么">
-<meta property="og:url" content="https://scau009.github.io/2020/03/16/alogrithm-03-16/index.html">
+<meta property="og:url" content="https://scau009.github.io/2020/03/16/alogrithm-03-16-1/index.html">
 <meta property="og:site_name" content="KeLing">
 <meta property="og:description" content="在计算机科学中，时间复杂性，又称时间复杂度，算法的时间复杂度是一个函数，它定性描述该算法的运行时间 O(1)表示一次操作即可直接取得目标元素（比如字典或哈希表） O(n) 意味着先要检查 n 个元素来搜索目标，但是 O(log n) 是什么意思呢？ 第一次听说 O(log n) 时间复杂度可能是在学二分搜索算法的时候。二分搜索一定有某种行为使其时间复杂度为 log n。我们来看看是二分搜索是如何实">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145317168-568192938.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145331501-1550497361.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145346056-476935969.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145359244-1921372016.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145408483-485222461.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145420714-1783776406.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145434781-1466810425.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145523244-1702835266.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145537164-1213998548.png">
+<meta property="og:image" content="https://scau009.github.io/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145317168-568192938.png">
+<meta property="og:image" content="https://scau009.github.io/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145331501-1550497361.png">
+<meta property="og:image" content="https://scau009.github.io/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145346056-476935969.png">
+<meta property="og:image" content="https://scau009.github.io/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145359244-1921372016.png">
+<meta property="og:image" content="https://scau009.github.io/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145408483-485222461.png">
+<meta property="og:image" content="https://scau009.github.io/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145420714-1783776406.png">
+<meta property="og:image" content="https://scau009.github.io/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145434781-1466810425.png">
+<meta property="og:image" content="https://scau009.github.io/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145523244-1702835266.png">
+<meta property="og:image" content="https://scau009.github.io/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145537164-1213998548.png">
 <meta property="article:published_time" content="2020-03-16T01:51:34.000Z">
-<meta property="article:modified_time" content="2020-03-16T02:56:22.023Z">
+<meta property="article:modified_time" content="2020-03-16T03:10:37.339Z">
 <meta property="article:author" content="春天的熊">
 <meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145317168-568192938.png">
+<meta name="twitter:image" content="https://scau009.github.io/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145317168-568192938.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -74,9 +74,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-alogrithm-03-16" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-alogrithm-03-16-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/bear.github.io/2020/03/16/alogrithm-03-16/" class="article-date">
+    <a href="/bear.github.io/2020/03/16/alogrithm-03-16-1/" class="article-date">
   <time datetime="2020-03-16T01:51:34.000Z" itemprop="datePublished">2020年03月16</time>
 </a>
     
@@ -101,25 +101,23 @@
 <p>O(n) 意味着先要检查 n 个元素来搜索目标，但是 O(log n) 是什么意思呢？</p>
 <p>第一次听说 O(log n) 时间复杂度可能是在学二分搜索算法的时候。二分搜索一定有某种行为使其时间复杂度为 log n。我们来看看是二分搜索是如何实现的。</p>
 <p>因为在最好情况下二分搜索的时间复杂度是 O(1)，最坏情况（平均情况）下 O(log n)，我们直接来看最坏情况下的例子。已知有 16 个元素的有序数组。<br>举个最坏情况的例子，比如我们要找的是数字 13。</p>
-
-
-<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145317168-568192938.png" alt="pic"></p>
+<p><img src="/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145317168-568192938.png" alt="pic"></p>
 <p>选中间的元素作为中心点16（长度的一半）得出下图的，13 小于中心点，所以不用考虑数组的后一半</p>
-<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145331501-1550497361.png" alt="pci2"></p>
+<p><img src="/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145331501-1550497361.png" alt="pci2"></p>
 <p>重复这个过程，每次都寻找子数组的中间元素</p>
-<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145346056-476935969.png" alt="pci3"></p>
-<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145359244-1921372016.png" alt="pic4"></p>
-<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145408483-485222461.png" alt="pic5"></p>
+<p><img src="/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145346056-476935969.png" alt="pci3"></p>
+<p><img src="/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145359244-1921372016.png" alt="pic4"></p>
+<p><img src="/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145408483-485222461.png" alt="pic5"></p>
 <p>每次和中间元素比较都会使搜索范围减半。</p>
 <p>所以为了从 16 个元素中找到目标元素，我们需要把数组平均分割 4 次，也就是说，</p>
-<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145420714-1783776406.png" alt="pic6"></p>
+<p><img src="/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145420714-1783776406.png" alt="pic6"></p>
 <p>简化后的公式</p>
 <p>类似的，如果有 n 个元素，</p>
-<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145434781-1466810425.png" alt="pic7"></p>
+<p><img src="/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145434781-1466810425.png" alt="pic7"></p>
 <p>归纳变形得出</p>
-<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145523244-1702835266.png" alt="pic8"></p>
+<p><img src="/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145523244-1702835266.png" alt="pic8"></p>
 <p>从结果上来看，可以用【对数】表达式来表示上面的式子，<br>也就是说可以写成这种形式</p>
-<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145537164-1213998548.png" alt="pci8"></p>
+<p><img src="/bear.github.io/2020/03/16/alogrithm-03-16-1/338869-20190508145537164-1213998548.png" alt="pci8"></p>
 <p>这个 K 不正是我们二分查找的次数吗？2 的 K 次方等于 N</p>
 <p>所以 log n 的确是有意义的，不是吗？没有其他什么可以表示这种行为.</p>
 <h3 id="那么问题来了，为什么不是-O-log-n-不写底数-2-呢？"><a href="#那么问题来了，为什么不是-O-log-n-不写底数-2-呢？" class="headerlink" title="那么问题来了，为什么不是 O(log n)不写底数 2 呢？"></a>那么问题来了，为什么不是 O(log n)不写底数 2 呢？</h3><blockquote>
@@ -129,7 +127,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://scau009.github.io/2020/03/16/alogrithm-03-16/" data-id="ck7tvnrlm0002qj9tc7lfey7f" class="article-share-link">Share</a>
+      <a data-url="https://scau009.github.io/2020/03/16/alogrithm-03-16-1/" data-id="ck7tw90zp0000z29ta8mlf8pr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bear.github.io/tags/algorithm/" rel="tag">algorithm</a></li></ul>
@@ -201,7 +199,7 @@
       <ul>
         
           <li>
-            <a href="/bear.github.io/2020/03/16/alogrithm-03-16/">时间复杂度O(log n)到底是什么</a>
+            <a href="/bear.github.io/2020/03/16/alogrithm-03-16-1/">时间复杂度O(log n)到底是什么</a>
           </li>
         
           <li>
