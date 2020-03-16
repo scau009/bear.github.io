@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>时间复杂度O(log n)到底是什么 | KeLing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在计算机科学中，时间复杂性，又称时间复杂度，算法的时间复杂度是一个函数，它定性描述该算法的运行时间 O(1)表示一次操作即可直接取得目标元素（比如字典或哈希表） O(n) 意味着先要检查 n 个元素来搜索目标，但是 O(log n) 是什么意思呢？ 第一次听说 O(log n) 时间复杂度可能是在学二分搜索算法的时候。二分搜索一定有某种行为使其时间复杂度为 log n。我们来看看是二分搜索是如何实">
+<meta property="og:type" content="article">
+<meta property="og:title" content="时间复杂度O(log n)到底是什么">
+<meta property="og:url" content="https://scau009.github.io/2020/03/16/alogrithm-03-16/index.html">
+<meta property="og:site_name" content="KeLing">
+<meta property="og:description" content="在计算机科学中，时间复杂性，又称时间复杂度，算法的时间复杂度是一个函数，它定性描述该算法的运行时间 O(1)表示一次操作即可直接取得目标元素（比如字典或哈希表） O(n) 意味着先要检查 n 个元素来搜索目标，但是 O(log n) 是什么意思呢？ 第一次听说 O(log n) 时间复杂度可能是在学二分搜索算法的时候。二分搜索一定有某种行为使其时间复杂度为 log n。我们来看看是二分搜索是如何实">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145317168-568192938.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145331501-1550497361.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145346056-476935969.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145359244-1921372016.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145408483-485222461.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145420714-1783776406.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145434781-1466810425.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145523244-1702835266.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145537164-1213998548.png">
+<meta property="article:published_time" content="2020-03-16T01:51:34.000Z">
+<meta property="article:modified_time" content="2020-03-16T02:05:06.435Z">
+<meta property="article:author" content="春天的熊">
+<meta property="article:tag" content="algorithm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145317168-568192938.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/bear.github.io/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/bear.github.io/atom.xml" title="KeLing" type="application/atom+xml">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/bear.github.io/" id="logo">KeLing</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/bear.github.io/">首页</a>
+        
+          <a class="main-nav-link" href="/bear.github.io/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://scau009.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-alogrithm-03-16" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bear.github.io/2020/03/16/alogrithm-03-16/" class="article-date">
+  <time datetime="2020-03-16T01:51:34.000Z" itemprop="datePublished">2020年03月16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      时间复杂度O(log n)到底是什么
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在计算机科学中，时间复杂性，又称时间复杂度，算法的时间复杂度是一个函数，它定性描述该算法的运行时间</p>
+<p>O(1)表示一次操作即可直接取得目标元素（比如字典或哈希表）</p>
+<p>O(n) 意味着先要检查 n 个元素来搜索目标，但是 O(log n) 是什么意思呢？</p>
+<p>第一次听说 O(log n) 时间复杂度可能是在学二分搜索算法的时候。二分搜索一定有某种行为使其时间复杂度为 log n。我们来看看是二分搜索是如何实现的。</p>
+<p>因为在最好情况下二分搜索的时间复杂度是 O(1)，最坏情况（平均情况）下 O(log n)，我们直接来看最坏情况下的例子。已知有 16 个元素的有序数组。<br>举个最坏情况的例子，比如我们要找的是数字 13。</p>
+<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145317168-568192938.png" alt="pic"></p>
+<p>选中间的元素作为中心点16（长度的一半）得出下图的，13 小于中心点，所以不用考虑数组的后一半</p>
+<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145331501-1550497361.png" alt="pci2"></p>
+<p>重复这个过程，每次都寻找子数组的中间元素</p>
+<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145346056-476935969.png" alt="pci3"></p>
+<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145359244-1921372016.png" alt="pic4"></p>
+<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145408483-485222461.png" alt="pic5"></p>
+<p>每次和中间元素比较都会使搜索范围减半。</p>
+<p>所以为了从 16 个元素中找到目标元素，我们需要把数组平均分割 4 次，也就是说，</p>
+<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145420714-1783776406.png" alt="pic6"></p>
+<p>简化后的公式</p>
+<p>类似的，如果有 n 个元素，</p>
+<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145434781-1466810425.png" alt="pic7"></p>
+<p>归纳变形得出</p>
+<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145523244-1702835266.png" alt="pic8"></p>
+<p>从结果上来看，可以用【对数】表达式来表示上面的式子，<br>也就是说可以写成这种形式</p>
+<p><img src="https://img2018.cnblogs.com/blog/338869/201905/338869-20190508145537164-1213998548.png" alt="pci8"></p>
+<p>这个 K 不正是我们二分查找的次数吗？2 的 K 次方等于 N</p>
+<p>所以 log n 的确是有意义的，不是吗？没有其他什么可以表示这种行为.</p>
+<h3 id="那么问题来了，为什么不是-O-log-n-不写底数-2-呢？"><a href="#那么问题来了，为什么不是-O-log-n-不写底数-2-呢？" class="headerlink" title="那么问题来了，为什么不是 O(log n)不写底数 2 呢？"></a>那么问题来了，为什么不是 O(log n)不写底数 2 呢？</h3><blockquote>
+<p>其实这里的底数对于研究程序运行效率不重要，写代码时要考虑的是数据规模n对程序运行效率的影响，常数部分则忽略，同样的，如果不同时间复杂度的倍数关系为常数，那也可以近似认为两者为同一量级的时间复杂度。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://scau009.github.io/2020/03/16/alogrithm-03-16/" data-id="ck7tuoinp00002z9t5ju20jeg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bear.github.io/tags/algorithm/" rel="tag">algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/bear.github.io/2020/03/13/mysql-03-13/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MySQL优化——缓存表与汇总表</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/bear.github.io/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/bear.github.io/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/bear.github.io/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/bear.github.io/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/bear.github.io/tags/algorithm/" rel="tag">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/bear.github.io/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/bear.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/bear.github.io/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/bear.github.io/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/bear.github.io/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/bear.github.io/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/bear.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/bear.github.io/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/bear.github.io/archives/2020/03/">三月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/bear.github.io/2020/03/16/alogrithm-03-16/">时间复杂度O(log n)到底是什么</a>
+          </li>
+        
+          <li>
+            <a href="/bear.github.io/2020/03/13/mysql-03-13/">MySQL优化——缓存表与汇总表</a>
+          </li>
+        
+          <li>
+            <a href="/bear.github.io/2020/03/09/mysql-03-09/">MySQL并发控制以及事务概念</a>
+          </li>
+        
+          <li>
+            <a href="/bear.github.io/2020/03/09/leetcode3/">leetcode3 无重复字符的最长子串</a>
+          </li>
+        
+          <li>
+            <a href="/bear.github.io/2020/03/08/2020-03-08/">2020-03-08</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 春天的熊<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/bear.github.io/" class="mobile-nav-link">首页</a>
+  
+    <a href="/bear.github.io/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/bear.github.io/fancybox/jquery.fancybox.css">
+
+  
+<script src="/bear.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/bear.github.io/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
