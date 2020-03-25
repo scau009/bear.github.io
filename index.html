@@ -61,6 +61,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mysql-03-25" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bear.github.io/2020/03/25/mysql-03-25/" class="article-date">
+  <time datetime="2020-03-25T01:04:44.000Z" itemprop="datePublished">2020年03月25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/bear.github.io/categories/MySQL/">MySQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/bear.github.io/2020/03/25/mysql-03-25/">MySQL 索引顺序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>假设一个数据表people的 schema 如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE people(</span><br><span class="line">    last_name varchar(40) not null,</span><br><span class="line">    first_name varchar(30) not null,</span><br><span class="line">    dob date not null,</span><br><span class="line">    gender enum(&#39;m&#39;,f) not null,</span><br><span class="line">    key(last_name,first_name,dob)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>people 表创建了一个索引，索引包括三列，分别是last_name,first_name,dob<br>对于以下情况的搜索索引生效：</p>
+<ol>
+<li>全值匹配（也就是索引的所有列都用上，精确匹配）</li>
+<li>匹配最左前缀（只用上索引的最左侧的列，上面例子是 last_name,精确匹配）</li>
+<li>匹配列前缀（只用上索引的最左侧的列，上面例子是 last_name,模糊匹配，比喻以 K开头的 last_name）</li>
+<li>匹配范围值（只用上索引的最左侧的列，上面例子是 last_name，模糊匹配，范围查询）</li>
+<li>精确匹配某一列并且范围匹配另外一列（只用上索引的最左侧的两列，上面例子是 last_name 和 first_name）</li>
+<li>只访问索引的查询</li>
+</ol>
+<p>对于以下情况索引不生效</p>
+<ol>
+<li>如果不是按照索引的最左列开始查找，则无法使用索引。（也就是说查询时不能只用 first_name，因为 first_name 不是最左侧的索引列，这时候索引不生效）</li>
+<li>不能跳过索引中的列。（也就是说，使用 last_name 和 dob 列查询时候，索引与预期不一致，会变成使用第一列即 last_name ）</li>
+<li>如果查询中有某个列的范围查询，则右边所有列都无法使用索引(举个例子，Where last_name=’jobn’ and fist_name like ‘J%’ and dob=’2010-10-01’，这个查询只用到索引的前两列，dob 列没起作用)</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://scau009.github.io/2020/03/25/mysql-03-25/" data-id="ck86o52dl0000sd9tb2367uyv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bear.github.io/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bear.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-alogrithm-03-16-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/bear.github.io/2020/03/16/alogrithm-03-16-1/" class="article-date">
@@ -438,7 +497,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/bear.github.io/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/bear.github.io/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/bear.github.io/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/bear.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/bear.github.io/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a>
+      <a href="/bear.github.io/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/bear.github.io/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/bear.github.io/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/bear.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/bear.github.io/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a>
     </div>
   </div>
 
@@ -460,6 +519,10 @@
       <ul>
         
           <li>
+            <a href="/bear.github.io/2020/03/25/mysql-03-25/">MySQL 索引顺序</a>
+          </li>
+        
+          <li>
             <a href="/bear.github.io/2020/03/16/alogrithm-03-16-1/">时间复杂度O(log n)到底是什么</a>
           </li>
         
@@ -473,10 +536,6 @@
         
           <li>
             <a href="/bear.github.io/2020/03/09/leetcode3/">leetcode3 无重复字符的最长子串</a>
-          </li>
-        
-          <li>
-            <a href="/bear.github.io/2020/03/08/2020-03-08/">2020-03-08</a>
           </li>
         
       </ul>
@@ -506,7 +565,7 @@
 </nav>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/core.js"></script>
 
 
   

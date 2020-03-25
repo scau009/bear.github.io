@@ -6,7 +6,7 @@
   <link href="/bear.github.io/atom.xml" rel="self"/>
   
   <link href="https://scau009.github.io/"/>
-  <updated>2020-03-16T03:10:37.339Z</updated>
+  <updated>2020-03-25T01:31:03.415Z</updated>
   <id>https://scau009.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL 索引顺序</title>
+    <link href="https://scau009.github.io/2020/03/25/mysql-03-25/"/>
+    <id>https://scau009.github.io/2020/03/25/mysql-03-25/</id>
+    <published>2020-03-25T01:04:44.000Z</published>
+    <updated>2020-03-25T01:31:03.415Z</updated>
+    
+    <content type="html"><![CDATA[<p>假设一个数据表people的 schema 如下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE people(</span><br><span class="line">    last_name varchar(40) not null,</span><br><span class="line">    first_name varchar(30) not null,</span><br><span class="line">    dob date not null,</span><br><span class="line">    gender enum(&#39;m&#39;,f) not null,</span><br><span class="line">    key(last_name,first_name,dob)</span><br><span class="line">);</span><br></pre></td></tr></table></figure><p>people 表创建了一个索引，索引包括三列，分别是last_name,first_name,dob<br>对于以下情况的搜索索引生效：</p><ol><li>全值匹配（也就是索引的所有列都用上，精确匹配）</li><li>匹配最左前缀（只用上索引的最左侧的列，上面例子是 last_name,精确匹配）</li><li>匹配列前缀（只用上索引的最左侧的列，上面例子是 last_name,模糊匹配，比喻以 K开头的 last_name）</li><li>匹配范围值（只用上索引的最左侧的列，上面例子是 last_name，模糊匹配，范围查询）</li><li>精确匹配某一列并且范围匹配另外一列（只用上索引的最左侧的两列，上面例子是 last_name 和 first_name）</li><li>只访问索引的查询</li></ol><p>对于以下情况索引不生效</p><ol><li>如果不是按照索引的最左列开始查找，则无法使用索引。（也就是说查询时不能只用 first_name，因为 first_name 不是最左侧的索引列，这时候索引不生效）</li><li>不能跳过索引中的列。（也就是说，使用 last_name 和 dob 列查询时候，索引与预期不一致，会变成使用第一列即 last_name ）</li><li>如果查询中有某个列的范围查询，则右边所有列都无法使用索引(举个例子，Where last_name=’jobn’ and fist_name like ‘J%’ and dob=’2010-10-01’，这个查询只用到索引的前两列，dob 列没起作用)</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;假设一个数据表people的 schema 如下&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span clas
+      
+    
+    </summary>
+    
+    
+      <category term="MySQL" scheme="https://scau009.github.io/categories/MySQL/"/>
+    
+    
+      <category term="数据库" scheme="https://scau009.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MySQL" scheme="https://scau009.github.io/tags/MySQL/"/>
+    
+  </entry>
   
   <entry>
     <title>时间复杂度O(log n)到底是什么</title>
